@@ -1,3 +1,4 @@
+//test for at se om github virker
 let currentPage = 1;
 let pages
 function setup(){
