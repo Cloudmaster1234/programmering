@@ -1,4 +1,3 @@
-//test
 let currentPage = 1;
 let pages
 function setup(){
