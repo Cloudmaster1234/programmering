@@ -1,0 +1,9 @@
+{
+    "Name": "Simon Dines Hansen",
+    "description": "dette er data fra den lokale fil mydata.json de ligger i Javascript Objectet Notation (JSON), og er hentet med funktionen fetch",
+    "haircolor": "brown",
+    "happy": true,
+    "have family": true,
+    "dog": true,
+    "family names": ["john", "jane", "liva", "Simon", "tessa"]
+}
