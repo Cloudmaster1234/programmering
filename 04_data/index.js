@@ -58,10 +58,25 @@ function pageTwo(){
 
             //p5 function der laver en div
             let newDiv = createElement('div')
+            //så laver vi en overskrift
             let newHeader = createElement('h1', data.Name)
+            //så laver vi er p-element
             let newP = createElement('p', data.description)
+            //vi laver en underoverskrift
+            let familieHeader = createElement('h2', 'familie medlemer')
+            //nu skal jeg løbe et array igennem fra json
+            let familie = createElement('ul')
+            for(Name of data.familyNames){
+                console.log(Name)
+                let listItem = createElement('li', Name)
+                familie.child(listItem)
+            }
+            //til sidst lægger vi de nye element ind i den div vi oprettede
             newDiv.child(newHeader)
             newDiv.child(newP)
+            newDiv.child(familieHeader)
+            newDiv.child(familie)
+            //og sæt data ind i det
             select('#localData').child(newDiv)
         }
     )
