@@ -25,7 +25,7 @@
             //beskeden skal vi lige passe før vi kan læse den
             console.log(besked.toString())
             //det vi får fra 5m'eren er i det her eksempel JSON format
-            let json = parse(besked.toString())
+            let json = JSON.parse(besked.toString())
             //nu kan jeg bruge data fra JSON objektet
             console.log(json.name, 'her er navent fra JSON objektet')
             m5NameDiv.html(json.name)
