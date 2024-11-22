@@ -9,4 +9,5 @@ function setup(){
     let otherClock = new Clock( otherClockDiv )
     otherClock.start()
     otherClockDiv.position( 100, 100 )
+    otherClock.setAlarm('11','12','0')
 }

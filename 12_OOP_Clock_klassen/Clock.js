@@ -16,6 +16,13 @@ class Clock {
         this.div.child(this.sDiv)
         //interval til at sætte tiden ind 
         this.interval
+
+        //alarm stuff
+        this.alarmSet = false
+        this.alarmHours = null
+        this.alarmMinutes = null
+        this.alarmSeconds = null
+        this.alarmRinging = false
         //styles 
         this.div.style(
             `
@@ -48,14 +55,34 @@ class Clock {
     }
     start(){
         this.interval = setInterval( ()=>{
-            //den her komapkte linje kode, betyder at vi SPØRGER om hour() funktionen returnerer 
+            //den her kompakte linje kode, betyder at vi SPØRGER om hour() funktionen returnerer 
             //et tal UNDER ti - hvis ja, sætter vi et nul foran 
             this.hDiv.html( hour() < 10 ? '0' + hour() : hour() )
             this.mDiv.html( minute() < 10 ? '0' + minute() : minute() )
             this.sDiv.html( second() < 10 ? '0' + second() : second() )
+            this.checkAlarm()
         }, 1000)
     }
     stop(){
         clearInterval(this.interval)
+    }
+    setAlarm(h, m, s){
+        this.alarmHours = h
+        this.alarmMinutes = m
+        this.alarmSeconds = s
+        this.alarmSet = true
+        console.log(`Alarm set to ${h}:${m}:${s}`)
+    }
+    checkAlarm(){
+        if(this.alarmSet){
+            if(this.alarmHours == hour() && this.alarmMinutes == minute() && this.alarmSeconds == second()){
+                console.log('ALARM GO')
+                this.showAlarm()
+            }
+        }
+    }
+    showAlarm(){
+        this.div.style('background', 'red')
+        this.alarmRinging = true
     }
 }
