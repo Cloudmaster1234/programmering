@@ -16,6 +16,11 @@
     transition: 0.3s 0.3s all ease-in-out;
 }
 
+#calendar{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 5rem;
+}
 .time{
     font-family:arial;
     font-size:6rem;
