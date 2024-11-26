@@ -2,10 +2,11 @@ console.log('OOP is here')
 
 class Door {
   //kaldes ved oprettelse af nye objekter 
-  constructor(containerDiv, day, content) {
+  constructor(containerDiv, day, content, doorSound) {
     this.parentDiv = containerDiv
     this.day = day
     this.content = content
+    this.doorSound = doorSound
     this.createDoor()
   }
     
@@ -34,6 +35,7 @@ class Door {
       background-size:covor;
       pointer-events:none;
       `)
+      this.doorSound.play()
   }
 
 }
