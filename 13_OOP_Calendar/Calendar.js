@@ -1,5 +1,19 @@
 console.log('OOP is here')
 
+class DoorFactory{
+  static createDoor(container, obj){
+    console.log('create thing', obj)
+
+    switch(obj.type){
+      case 'video':
+        return new VideoDoor(container, obj.day, null, obj.content)
+      case 'image': 
+        return new Door(container, obj.day, obj.content, obj.sound || null)
+
+    }
+  }
+}
+
 class Door {
   //kaldes ved oprettelse af nye objekter 
   constructor(containerDiv, day, content, doorSound) {
@@ -37,7 +51,9 @@ class Door {
       background-size:cover;
       pointer-events:none;  
     `)
-    this.doorSound.play()
+    if(this.doorSound){
+      this.doorSound.play()
+    }
   }
 
 }

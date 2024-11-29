@@ -2,7 +2,8 @@ let dataStructure = [
     {
       day:"1",
       content:"./assets/jul.jpg",
-      "type":"image"
+      "type":"image",
+      "sound": './assets/doorSound.mp3'
     },
     {
       day:"2",
