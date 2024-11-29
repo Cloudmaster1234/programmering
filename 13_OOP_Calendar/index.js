@@ -1,43 +1,5 @@
 let classContainer
 let doorSound
-let dataStructure = [
-  {
-    day:"1",
-    content:"./assets/jul.jpg"
-  },
-  {
-    day:"2",
-    content:"./assets/jul.jpg"
-  },
-  {
-    day:"3",
-    content:"./assets/jul.jpg"
-  },
-  {
-    day:"4",
-    content:"./assets/jul.jpg"
-  },
-  {
-    day:"5",
-    content:"./assets/jul.jpg"
-  },
-  {
-    day:"6",
-    content:"./assets/jul.jpg"
-  },
-  {
-    day:"7",
-    content:"./assets/jul.jpg"
-  },
-  {
-    day:"8",
-    content:"./assets/jul.jpg"
-  },
-  {
-    day:"9",
-    content:"./assets/jul.jpg"
-  },
-] 
 
 function preload() {
   doorSound = loadSound('./assets/doorSound.mp3')
@@ -52,4 +14,6 @@ function setup() {
   for( door of dataStructure ){
     new Door(calendarContainer, door.day, door.content, doorSound)
   }
+
+  let test = new VideoDoor(calendarContainer, '5', doorSound, "https://www.youtube.com/embed/ZFt83Q3GOok?si=Crtk8u15Y7dA_1Us")
 }
