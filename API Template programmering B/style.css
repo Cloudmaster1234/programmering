@@ -1,0 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+/*klassen jokeDiv*/
+.jokeDiv{
+  position:fixed;
+  top: 10vh;
+  width: 80vw;
+  margin:10vw;
+  text-align: center;
+}
