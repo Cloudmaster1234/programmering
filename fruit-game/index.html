@@ -1,3 +1,5 @@
+// filepath: /Users/simondineshansen/Documents/Skole/programmering/Github/programmering/frugt i kurv/index.js
+
 let fruits = [];
 let cart;
 
@@ -21,12 +23,15 @@ function draw() {
   }
   
   // Display the cart
-  cart.update();
   cart.display();
-  
-  // Randomly add fruits
-  if (frameCount % 60 === 0) { // Add a fruit every second
-    fruits.push(new Fruit(random(['banana', 'orange'])));
+}
+
+// Function to create new fruits at random intervals
+function mousePressed() {
+  if (random() < 0.5) {
+    fruits.push(new Fruit('banana'));
+  } else {
+    fruits.push(new Fruit('orange'));
   }
 }
 
@@ -39,11 +44,11 @@ class Fruit {
     this.size = 40;
     this.speed = 2;
   }
-  
+
   update() {
     this.y += this.speed; // Move the fruit down
   }
-  
+
   display() {
     if (this.type === 'banana') {
       fill(255, 255, 0); // Yellow for bananas
@@ -53,9 +58,10 @@ class Fruit {
       ellipse(this.x, this.y, this.size); // Draw orange as a circle
     }
   }
-  
+
   collidesWith(cart) {
-    return this.x > cart.x && this.x < cart.x + cart.size && this.y + this.size / 2 > cart.y;
+    return (this.x > cart.x && this.x < cart.x + cart.size && 
+            this.y + this.size / 2 > cart.y);
   }
 }
 
@@ -65,20 +71,10 @@ class Cart {
     this.x = windowWidth / 2 - 50;
     this.y = windowHeight - 200;
     this.size = 100;
-    this.speed = 5;
   }
-  
-  update() {
-    if (keyIsDown(LEFT_ARROW)) {
-      this.x -= this.speed;
-    }
-    if (keyIsDown(RIGHT_ARROW)) {
-      this.x += this.speed;
-    }
-  }
-  
+
   display() {
     fill(255, 0, 0); // Red for the cart
-    rect(this.x, this.y, this.size, 80); // Draw the cart
+    rect(this.x, this.y, this.size, 80); // Draw cart as a rectangle
   }
 }

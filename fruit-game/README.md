@@ -1,3 +1,8 @@
+### Updated `index.js`
+
+```javascript
+// filepath: /Users/simondineshansen/Documents/Skole/programmering/Github/programmering/frugt i kurv/index.js
+
 let fruits = [];
 let cart;
 
@@ -21,7 +26,6 @@ function draw() {
   }
   
   // Display the cart
-  cart.update();
   cart.display();
   
   // Randomly add fruits
@@ -65,16 +69,6 @@ class Cart {
     this.x = windowWidth / 2 - 50;
     this.y = windowHeight - 200;
     this.size = 100;
-    this.speed = 5;
-  }
-  
-  update() {
-    if (keyIsDown(LEFT_ARROW)) {
-      this.x -= this.speed;
-    }
-    if (keyIsDown(RIGHT_ARROW)) {
-      this.x += this.speed;
-    }
   }
   
   display() {
@@ -82,3 +76,24 @@ class Cart {
     rect(this.x, this.y, this.size, 80); // Draw the cart
   }
 }
+```
+
+### Explanation of the Code
+
+1. **Setup and Draw Functions**: The `setup` function initializes the canvas and creates a shopping cart. The `draw` function updates the background, updates and displays the fruits, checks for collisions, and displays the cart.
+
+2. **Fruit Class**: This class represents the falling fruits. It has properties for type, position, size, and speed. The `update` method moves the fruit down the screen, and the `display` method draws the fruit based on its type.
+
+3. **Collision Detection**: The `collidesWith` method checks if the fruit has collided with the cart by comparing their positions.
+
+4. **Cart Class**: This class represents the shopping cart at the bottom of the screen. It has properties for position and size and a `display` method to draw the cart.
+
+5. **Random Fruit Generation**: Every second (60 frames), a new fruit is randomly generated and added to the `fruits` array.
+
+### HTML and CSS
+
+You can keep your existing `index.html` and `style.css` files as they are, as they are already set up correctly to run the p5.js sketch.
+
+### Running the Game
+
+To run the game, simply open the `index.html` file in a web browser. You should see bananas and oranges falling from the top of the screen, and they will disappear when they collide with the red shopping cart at the bottom.

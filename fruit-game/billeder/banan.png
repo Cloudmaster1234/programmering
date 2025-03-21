@@ -1,0 +1,78 @@
+// filepath: /Users/simondineshansen/Documents/Skole/programmering/Github/programmering/frugt i kurv/index.js
+
+let fruits = [];
+let cart;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  cart = new Cart();
+}
+
+function draw() {
+  background(255);
+  
+  // Update and display fruits
+  for (let i = fruits.length - 1; i >= 0; i--) {
+    fruits[i].update();
+    fruits[i].display();
+    
+    // Check for collision with cart
+    if (fruits[i].collidesWith(cart)) {
+      fruits.splice(i, 1); // Remove fruit if it collides with cart
+    }
+  }
+  
+  // Display the cart
+  cart.display();
+}
+
+// Function to create new fruits
+function createFruit() {
+  let fruitType = random(['banana', 'orange']);
+  fruits.push(new Fruit(random(width), 0, fruitType));
+}
+
+// Fruit class
+class Fruit {
+  constructor(x, y, type) {
+    this.x = x;
+    this.y = y;
+    this.type = type;
+    this.size = 40; // Size of the fruit
+  }
+  
+  update() {
+    this.y += 5; // Fall speed
+  }
+  
+  display() {
+    if (this.type === 'banana') {
+      fill(255, 255, 0); // Yellow for banana
+      ellipse(this.x, this.y, this.size, this.size * 0.5); // Draw banana as an ellipse
+    } else if (this.type === 'orange') {
+      fill(255, 165, 0); // Orange color
+      ellipse(this.x, this.y, this.size); // Draw orange as a circle
+    }
+  }
+  
+  collidesWith(cart) {
+    return (this.x > cart.x && this.x < cart.x + cart.size && this.y + this.size / 2 > cart.y);
+  }
+}
+
+// Cart class
+class Cart {
+  constructor() {
+    this.x = windowWidth / 2 - 50;
+    this.y = windowHeight - 200;
+    this.size = 100; // Size of the cart
+  }
+  
+  display() {
+    fill(255, 0, 0); // Red color for cart
+    rect(this.x, this.y, this.size, 80); // Draw cart
+  }
+}
+
+// Create fruits at intervals
+setInterval(createFruit, 1000); // Create a new fruit every second

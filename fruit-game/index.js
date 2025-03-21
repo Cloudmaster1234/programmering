@@ -1,3 +1,5 @@
+// filepath: /Users/simondineshansen/Documents/Skole/programmering/Github/programmering/frugt i kurv/index.js
+
 let fruits = [];
 let cart;
 
@@ -21,39 +23,38 @@ function draw() {
   }
   
   // Display the cart
-  cart.update();
   cart.display();
-  
-  // Randomly add fruits
-  if (frameCount % 60 === 0) { // Add a fruit every second
-    fruits.push(new Fruit(random(['banana', 'orange'])));
-  }
+}
+
+function mousePressed() {
+  // Add a new fruit when the mouse is pressed
+  let fruitType = random(['banana', 'orange']);
+  fruits.push(new Fruit(random(width), 0, fruitType));
 }
 
 // Fruit class
 class Fruit {
-  constructor(type) {
+  constructor(x, y, type) {
+    this.x = x;
+    this.y = y;
     this.type = type;
-    this.x = random(width);
-    this.y = 0;
-    this.size = 40;
-    this.speed = 2;
+    this.size = 30; // Size of the fruit
   }
-  
+
   update() {
-    this.y += this.speed; // Move the fruit down
+    this.y += 5; // Fall speed
   }
-  
+
   display() {
     if (this.type === 'banana') {
       fill(255, 255, 0); // Yellow for bananas
-      ellipse(this.x, this.y, this.size, this.size / 2); // Draw banana as an ellipse
+      ellipse(this.x, this.y, this.size, this.size);
     } else if (this.type === 'orange') {
       fill(255, 165, 0); // Orange for oranges
-      ellipse(this.x, this.y, this.size); // Draw orange as a circle
+      ellipse(this.x, this.y, this.size, this.size);
     }
   }
-  
+
   collidesWith(cart) {
     return this.x > cart.x && this.x < cart.x + cart.size && this.y + this.size / 2 > cart.y;
   }
@@ -64,21 +65,11 @@ class Cart {
   constructor() {
     this.x = windowWidth / 2 - 50;
     this.y = windowHeight - 200;
-    this.size = 100;
-    this.speed = 5;
+    this.size = 100; // Size of the cart
   }
-  
-  update() {
-    if (keyIsDown(LEFT_ARROW)) {
-      this.x -= this.speed;
-    }
-    if (keyIsDown(RIGHT_ARROW)) {
-      this.x += this.speed;
-    }
-  }
-  
+
   display() {
     fill(255, 0, 0); // Red for the cart
-    rect(this.x, this.y, this.size, 80); // Draw the cart
+    rect(this.x, this.y, this.size, 80);
   }
 }
